@@ -1,0 +1,11 @@
+- hosts: docker
+  become: yes
+  tasks:
+    - name: Deploy Apps
+      docker_container:
+        name: share-api
+        image: 20.100.1.191:5000/smf/share-api:<tag_placeholder>
+        state: started
+        recreate: yes
+        ports:
+          - "4040:4040"
